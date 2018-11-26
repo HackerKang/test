@@ -4,7 +4,8 @@ import re
 
 
 url = 'http://www.powerballgame.co.kr/?view=dayLog'
-driver = webdriver.PhantomJS('C:\\Users\\user\\Downloads\\phantomjs-2.1.1-windows\\phantomjs-2.1.1-windows\\bin\\phantomjs.exe')
+# driver = webdriver.PhantomJS('C:\\Users\\user\\Downloads\\phantomjs-2.1.1-windows\\phantomjs-2.1.1-windows\\bin\\phantomjs.exe')
+driver = webdriver.PhantomJS('./pj/mac/phantomjs')
 driver.get(url)
 delay_time = 2
 driver.implicitly_wait(delay_time)
@@ -12,6 +13,7 @@ driver.implicitly_wait(delay_time)
 
 
 html = driver.page_source
+print(html)
 soup = BeautifulSoup(html, 'html.parser')
 table = soup.findall('table',{'class': 'numberText'})
 realtime_round = soup.select('table.powerballBox > tbody.content > tr > td > span.numberText')
